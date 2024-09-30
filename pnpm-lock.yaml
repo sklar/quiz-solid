@@ -11,6 +11,9 @@ importers:
       open-props:
         specifier: ^1.7.6
         version: 1.7.6
+      party-js:
+        specifier: ^2.2.0
+        version: 2.2.0
       solid-js:
         specifier: ^1.8.20
         version: 1.9.1
@@ -736,6 +739,9 @@ packages:
 
   parse5@7.1.2:
     resolution: {integrity: sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==}
+
+  party-js@2.2.0:
+    resolution: {integrity: sha512-50hGuALCpvDTrQLPQ1fgUgxKIWAH28ShVkmeK/3zhO0YJyCqkhrZhQEkWPxDYLvbFJ7YAXyROmFEu35gKpZLtQ==}
 
   picocolors@1.1.0:
     resolution: {integrity: sha512-TQ92mBOW0l3LeMeyLV6mzy/kWr8lkd/hp3mTg7wYK7zJhuBStmGMBG0BdeDZS/dZx1IukaX6Bk11zcln25o1Aw==}
@@ -1558,6 +1564,8 @@ snapshots:
   parse5@7.1.2:
     dependencies:
       entities: 4.5.0
+
+  party-js@2.2.0: {}
 
   picocolors@1.1.0: {}
 

@@ -1,10 +1,10 @@
 import party from 'party-js'
-import { type FC, useCallback, useEffect, useRef, useState } from 'react'
+import { type Component, createEffect, createSignal, onMount } from 'solid-js'
 
 import { QuizProgress } from './QuizProgress'
 import { QuizQuestion } from './QuizQuestion'
 import { QuizResult } from './QuizResult'
-import { useQuiz } from './quiz.controller'
+import { createQuiz } from './quiz.controller'
 
 import classes from './Quiz.module.css'
 
@@ -23,63 +23,59 @@ const celebrationGifs = [
 	'https://media.giphy.com/media/ujUdrdpX7Ok5W/giphy.gif',
 ]
 
-export const Quiz: FC = () => {
-	const confettiRef = useRef<HTMLDivElement>(null)
-	const [celebrationGif, setCelebrationGif] = useState('')
+export const Quiz: Component = () => {
+	let confettiRef: HTMLDivElement | undefined
 
-	const {
-		answerQuestion,
-		currentQuestionIndex,
-		generateNewSet,
-		isSetComplete,
-		questions,
-		timeTaken,
-	} = useQuiz()
+	const [celebrationGif, setCelebrationGif] = createSignal('')
 
-	const handleReload = useCallback(() => {
+	const quiz = createQuiz()
+
+	const handleReload = () => {
 		setCelebrationGif('')
-		generateNewSet()
-	}, [generateNewSet])
+		quiz.generateNewSet()
+	}
 
-	useEffect(() => {
-		generateNewSet()
-	}, [generateNewSet])
+	onMount(() => {
+		quiz.generateNewSet()
+	})
 
-	useEffect(() => {
-		if (isSetComplete) {
+	createEffect(() => {
+		if (quiz.isSetComplete()) {
 			setCelebrationGif(
 				celebrationGifs[Math.floor(Math.random() * celebrationGifs.length)],
 			)
-			confettiRef.current &&
-				party.confetti(confettiRef.current, {
+			if (confettiRef) {
+				party.confetti(confettiRef, {
 					count: party.variation.range(80, 160),
 				})
+			}
 		}
-	}, [isSetComplete])
-
-	const currentQuestion = questions[currentQuestionIndex]
+	})
 
 	return (
-		<section className={classes.container}>
-			<header className={classes.header}>
+		<section class={classes.container}>
+			<header class={classes.header}>
 				<h1>Math Quiz</h1>
 			</header>
-			<div className={classes.body}>
-				{!isSetComplete && currentQuestion && (
-					<QuizQuestion question={currentQuestion} onAnswer={answerQuestion} />
+			<div class={classes.body}>
+				{!quiz.isSetComplete() && quiz.currentQuestion() && (
+					<QuizQuestion
+						question={quiz.currentQuestion()!}
+						onAnswer={quiz.answerQuestion}
+					/>
 				)}
 			</div>
 			<footer>
-				{!isSetComplete ? (
-					<QuizProgress questions={questions} />
+				{!quiz.isSetComplete() ? (
+					<QuizProgress questions={quiz.questions} />
 				) : (
-					<QuizResult time={timeTaken} onReload={handleReload} />
+					<QuizResult time={quiz.timeTaken()} onReload={handleReload} />
 				)}
 			</footer>
-			<div ref={confettiRef} className={classes.confetti} />
+			<div ref={confettiRef} class={classes.confetti} />
 			<div
-				className={classes.celebrationGif}
-				style={{ backgroundImage: `url(${celebrationGif})` }}
+				class={classes.celebrationGif}
+				style={{ 'background-image': `url(${celebrationGif()})` }}
 			/>
 		</section>
 	)

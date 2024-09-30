@@ -1,16 +1,18 @@
-import type { FC } from 'react'
+import type { Accessor, Component } from 'solid-js'
+
 import type { Question } from './quiz.controller'
 
 import classes from './Quiz.module.css'
 
 interface QuizProgressProps {
-	questions: Question[]
+	questions: Accessor<Question[]>
 }
 
-export const QuizProgress: FC<QuizProgressProps> = ({ questions }) => {
+export const QuizProgress: Component<QuizProgressProps> = (props) => {
 	return (
-		<p className={classes.result} aria-label="Correct answers of all answers">
-			{questions.filter((q) => q.isCorrect).length} of {questions.length}
+		<p class={classes.result} aria-label="Correct answers of all answers">
+			{props.questions().filter((q) => q.isCorrect).length} of{' '}
+			{props.questions().length}
 		</p>
 	)
 }

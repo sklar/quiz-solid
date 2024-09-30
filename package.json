@@ -13,6 +13,7 @@
 	},
 	"dependencies": {
 		"open-props": "^1.7.6",
+		"party-js": "^2.2.0",
 		"solid-js": "^1.8.20"
 	},
 	"devDependencies": {

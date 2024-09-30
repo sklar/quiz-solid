@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import type { Component } from 'solid-js'
 
 import classes from './Quiz.module.css'
 
@@ -7,20 +7,20 @@ interface QuizResultProps {
 	onReload: () => void
 }
 
-export const QuizResult: FC<QuizResultProps> = ({ time, onReload }) => {
+export const QuizResult: Component<QuizResultProps> = (props) => {
 	return (
-		<p className={classes.result}>
+		<p class={classes.result}>
 			<time
-				className={classes.timer}
+				class={classes.timer}
 				aria-label="Time to complete the questions set"
 			>
-				{time.toFixed(0)} seconds
+				{props.time.toFixed(0)} seconds
 			</time>
 			<button
 				type="button"
-				className={classes.button}
+				class={classes.button}
 				aria-label="Load another set of questions"
-				onClick={onReload}
+				onClick={props.onReload}
 			>
 				Reload
 			</button>
