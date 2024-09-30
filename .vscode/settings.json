@@ -13,5 +13,12 @@
 	},
 	"[typescriptreact]": {
 		"editor.defaultFormatter": "biomejs.biome"
-	}
+	},
+
+	// ---------------------------------------------------------------------------
+	"cssModules.camelCase": true,
+
+	// ---------------------------------------------------------------------------
+	"cssvar.files": ["./node_modules/open-props/open-props.min.css"],
+	"cssvar.ignore": []
 }

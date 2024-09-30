@@ -12,10 +12,13 @@
 		"type:check": "tsc --noEmit"
 	},
 	"dependencies": {
+		"open-props": "^1.7.6",
 		"solid-js": "^1.8.20"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.2",
+		"browserslist": "^4.24.0",
+		"lightningcss": "^1.27.0",
 		"typescript": "^5.5.3",
 		"vite": "^5.4.1",
 		"vite-plugin-solid": "^2.10.2"

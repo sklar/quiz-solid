@@ -1,0 +1,81 @@
+.container {
+	display: grid;
+	gap: var(--size-4);
+	inline-size: fit-content;
+	margin-block-start: 20vh;
+	margin-inline: auto;
+	text-align: center;
+}
+
+.header {
+	inset-block-start: -200vh;
+	position: absolute;
+}
+
+.body {
+	block-size: var(--size-12);
+	display: grid;
+	place-items: center;
+}
+
+.question {
+	align-items: baseline;
+	display: inline flex;
+	font-size: var(--font-size-8);
+	font-weight: var(--font-weight-8);
+	gap: var(--size-3);
+
+	input {
+		background: none;
+		inline-size: 4ch;
+	}
+
+	::-webkit-inner-spin-button {
+		display: none;
+	}
+}
+
+.footer {
+}
+
+/* quiz progress */
+.progress {
+}
+
+/* quiz result */
+.result {
+	display: grid;
+	gap: var(--size-8);
+	justify-items: center;
+}
+
+.timer {
+	font-size: var(--font-size-8);
+	font-weight: var(--font-weight-8);
+	line-height: unset;
+}
+
+.button {
+	animation: var(--animation-fade-in) forwards, var(--animation-slide-in-up);
+	animation-delay: 0.8s;
+	animation-duration: 0.3s, 0.6s;
+	animation-timing-function: linear, var(--ease-spring-3);
+	opacity: 0;
+}
+
+/* celebration */
+.celebrationGif,
+.confetti {
+	inset: 0;
+	position: fixed;
+	z-index: -1;
+}
+
+.celebrationGif {
+	background-position: center;
+	background-size: cover;
+	border-radius: var(--radius-3);
+	inset: 4vmax;
+	max-inline-size: 2000px;
+	margin-inline: auto;
+}
