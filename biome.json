@@ -1,0 +1,55 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.2/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"files": {
+		"ignoreUnknown": false,
+		"ignore": ["tsconfig.app.json", "tsconfig.node.json"]
+	},
+	"formatter": { "enabled": true, "indentStyle": "tab" },
+	"organizeImports": { "enabled": true },
+	"linter": {
+		"enabled": true,
+		"rules": { "recommended": true },
+		"ignore": ["dist"]
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"semicolons": "asNeeded",
+			"trailingCommas": "all"
+		}
+	},
+	"overrides": [
+		{
+			"include": ["**/*.ts", "**/*.tsx"],
+			"linter": {
+				"rules": {
+					"a11y": {
+						"noAutofocus": "off",
+						"noBlankTarget": "off"
+					},
+					"style": {
+						"noNonNullAssertion": "off"
+					}
+				}
+			}
+		},
+		{
+			"include": ["**/*.css"],
+			"linter": {
+				"rules": {
+					"correctness": {
+						"noUnknownMediaFeatureName": "off"
+					},
+					"suspicious": {
+						"noEmptyBlock": "off"
+					}
+				}
+			}
+		}
+	]
+}

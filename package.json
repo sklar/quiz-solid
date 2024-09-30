@@ -1,19 +1,23 @@
 {
-  "name": "quiz-solid",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "solid-js": "^1.8.20"
-  },
-  "devDependencies": {
-    "typescript": "^5.5.3",
-    "vite": "^5.4.1",
-    "vite-plugin-solid": "^2.10.2"
-  }
+	"name": "quiz-solid",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc -b && vite build",
+		"preview": "vite preview",
+		"lint:check": "pnpm biome check .",
+		"lint:write": "pnpm biome check --write .",
+		"type:check": "tsc --noEmit"
+	},
+	"dependencies": {
+		"solid-js": "^1.8.20"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.2",
+		"typescript": "^5.5.3",
+		"vite": "^5.4.1",
+		"vite-plugin-solid": "^2.10.2"
+	}
 }
